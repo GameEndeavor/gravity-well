@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Grid.gd" type="Script" id=1]
+[ext_resource path="res://GravityWell.tscn" type="PackedScene" id=2]
+
+[node name="Game" type="Node2D"]
+
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="GravityWell" parent="." instance=ExtResource( 2 )]

@@ -1,14 +1,33 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Grid.gd" type="Script" id=1]
 [ext_resource path="res://GravityWell.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GravityWell.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://mask.png" type="Texture" id=5]
 
 [node name="Game" type="Node2D"]
+light_mask = 3
 
 [node name="Grid" type="Node2D" parent="."]
 script = ExtResource( 1 )
+grid_color = Color( 0.270588, 0.866667, 0.968627, 0.423529 )
+h_cells = 64
+v_cells = 64
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="GravityWell" parent="." instance=ExtResource( 2 )]
+[node name="GravityWell" type="Node2D" parent="." groups=[
+"gravity_wells",
+] instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -285.756, -129.465 )
+texture = ExtResource( 4 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 5 )
+mode = 3
+range_item_cull_mask = 2

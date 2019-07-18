@@ -5,13 +5,14 @@ var y_neighbor = null setget set_y_neighbor
 
 var x_line
 var y_line
+var line_color = Color.blue
 
 onready var anchor = global_position # Resting position
 var velocity := Vector2.ZERO
 
 func _process(delta):
 	var diff = anchor - global_position
-	var desired_velocity = diff * 16
+	var desired_velocity = diff * 8
 	velocity = velocity.linear_interpolate(desired_velocity, 0.2) # Push velocity towards anchor
 	# Iterate through all gravity wells
 	for well in get_tree().get_nodes_in_group("gravity_wells"):
@@ -49,6 +50,6 @@ func _create_line(neighbor : Node2D):
 	line.add_point(Vector2.ZERO)
 	line.add_point(neighbor.global_position - global_position)
 	line.width = 1
-	line.default_color = Color.gray
+	line.default_color = line_color
 	line.show_behind_parent = true
 	return line

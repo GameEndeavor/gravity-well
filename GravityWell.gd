@@ -16,10 +16,10 @@ func _input(event):
 func _process(delta):
 	# If holding left mouse button then increase weaker inner gravity
 	if Input.is_mouse_button_pressed(BUTTON_LEFT):
-		gravity = lerp(gravity, 128, 0.2)
+		gravity = lerp(gravity, 128, 0.5)
 	# Else gradually decrease gravity
 	else:
 		gravity = lerp(gravity, 0, 0.2)
-
-func _draw():
-	draw_circle(Vector2.ZERO, influence_radius, color)
+#
+#func _draw():
+#	draw_circle(Vector2.ZERO, influence_radius, color)
